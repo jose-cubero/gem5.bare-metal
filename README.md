@@ -28,7 +28,7 @@ To compile the example software set a proper path to you bare metal toolchain
 in common/Makefile, then run:
 
 ``` bash
-    cd Simple
+    cd simple
     make
 ```
 
@@ -41,11 +41,11 @@ To run the software in gem5 do the following steps:
     ${GEM5_PATH}/build/ARM/gem5.opt \
     ${GEM5_PATH}/configs/example/fs.py \
     --bare-metal \
-    --kernel=${TEST_BIN_PATH}/Simple/main.elf \
+    --kernel=${TEST_BIN_PATH}/simple/main.elf \
     --machine-type=VExpress_GEM5_V1
 ```
 
-*Note1: To build and run the interrupt example, simply repeat the steps above replacing "Simple" by "Interrupt".
+*Note1: To build and run the other applications, simply replace "simple" by "interrupt" or "multicore".
 *Note2: tested with gem5 v21.0.0.0 and v21.1.0.0.
 
 Licence
