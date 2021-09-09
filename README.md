@@ -1,13 +1,34 @@
-gem5 ARM Bare-Metal Example
+gem5 ARM Bare-Metal tests
 ===========================
 
-This git repository shows a simple example for an ARM Bare-Metal implementation
-with gem5. It can be used as a starting point for bare metal projects with
-this simulator. For more information on gem5 please look at:
-[gem5.org](http://www.gem5.org/Main_Page).
+This repository is based on (https://github.com/tukl-msd/gem5.bare-metal).
+It contains a set of basic ARM bare-metal applications which can be used to
+run gem5 simulations in full system mode. 
 
-To install the toolchain on Mac OSX you can yous macports:
+Included are 3 independent applications, placed inside a folder with the same name:
 
+Name      | Description                                                                           
+----------|---------------------------------------------------------------------------------------
+simple    | Single-core minimal "Hello World" application                                         
+interrupt | Single-core application showing the usage of the Generic Timer and Interrupt handling 
+multicore | Multi-core application with minimal MMU and cache initializaiton                      
+
+## Requirements
+
+### Working gem5 build
+
+For information on gem5, including mandatory system dependencies and 
+installation instructions please look at [gem5.org](http://www.gem5.org/Main_Page).
+
+We test the generated ARM binaries with gem5 v21.0.0.0 and v21.1.0.0.
+
+### GNU Arm Embedded Toolchain
+
+You can download this cross-compilation toolchain from the [official website](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads).
+
+Alternatively, use a pre-built package for your system. 
+
+On Mac OSX you can yous macports:
 ``` bash
     sudo port install arm-none-eabi-gcc
     sudo port install arm-none-eabi-gdb
@@ -24,19 +45,26 @@ on Linux based systems (e.g. Ubuntu/Debian):
     apt-get install gcc-arm-none-eabi
 ```
 
-To compile the example software set a proper path to you bare metal toolchain
-in common/Makefile, then run:
+## Usage
+
+### Compiling
+
+1. Set a proper path to you bare metal toolchain in common/Makefile.
+2. Change directory to the selected application folder (simple, interrupt, multicore)
+3. Run make
 
 ``` bash
     cd simple
     make
 ```
 
+### Running
+
 To run the software in gem5 do the following steps:
 
 ``` bash
     export GEM5_PATH="/path/to/gem5/repository"
-    export TEST_BIN_PATH="/path/to/gem5.bare-metal"
+    export TEST_BIN_PATH="/path/to/this/repository"
 
     ${GEM5_PATH}/build/ARM/gem5.opt \
     ${GEM5_PATH}/configs/example/fs.py \
@@ -45,8 +73,7 @@ To run the software in gem5 do the following steps:
     --machine-type=VExpress_GEM5_V1
 ```
 
-*Note1: To build and run the other applications, simply replace "simple" by "interrupt" or "multicore".
-*Note2: tested with gem5 v21.0.0.0 and v21.1.0.0.
+To run the other applications, simply replace "simple" by "interrupt" or "multicore".
 
 Licence
 =======

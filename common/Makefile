@@ -52,4 +52,4 @@ CXXFLAGS     = -g -O3 -lunistd -I . -fno-exceptions
 ASFLAGS      = -EL 
 LNK_OPT      = --specs=nosys.specs
 LNK_SCRIPT   = boot.ld
-LNK_FILE_OPT = -nostartfiles -Xlinker -T$(LNK_SCRIPT)
+LNK_FILE_OPT = -nostartfiles -Xlinker -Map=linkmap.txt -Xlinker -T$(LNK_SCRIPT)
