@@ -45,35 +45,56 @@ on Linux based systems (e.g. Ubuntu/Debian):
     apt-get install gcc-arm-none-eabi
 ```
 
+After installation, set a proper path to you bare metal toolchain in common/Makefile.
+
 ## Usage
 
-### Compiling
+### Single core applications: simple and interrupt
 
-1. Set a proper path to you bare metal toolchain in common/Makefile.
-2. Change directory to the selected application folder (simple, interrupt, multicore)
-3. Run make
+1. Change directory to the selected application folder (simple, interrupt)
+2. Run make
+3. Launch gem5 using the flags shown below.
 
-``` bash
-    cd simple
-    make
-```
-
-### Running
-
-To run the software in gem5 do the following steps:
+Example for the "simple" app:
 
 ``` bash
     export GEM5_PATH="/path/to/gem5/repository"
     export TEST_BIN_PATH="/path/to/this/repository"
+
+    cd simple
+    make
 
     ${GEM5_PATH}/build/ARM/gem5.opt \
     ${GEM5_PATH}/configs/example/fs.py \
     --bare-metal \
     --kernel=${TEST_BIN_PATH}/simple/main.elf \
     --machine-type=VExpress_GEM5_V1
+    --
 ```
 
-To run the other applications, simply replace "simple" by "interrupt" or "multicore".
+### Build and run the multi core application
+
+It is necessary to specify the desired number of cores to the build and launch command.
+Example for 4 cores, atomic CPU model and L1 & L2 caches:
+
+``` bash
+    export GEM5_PATH="/path/to/gem5/repository"
+    export TEST_BIN_PATH="/path/to/this/repository"
+    export NUM_CORES=4
+
+    cd multicore
+    make NUM_CORES=${NUM_CORES}
+
+    ${GEM5_PATH}/build/ARM/gem5.opt \
+    ${GEM5_PATH}/configs/example/fs.py \
+    --bare-metal \
+    --cpu-type=AtomicSimpleCPU \
+    --machine-type=VExpress_GEM5_V1 \
+    --caches \
+    --l2cache \
+    --kernel=${TEST_BIN_PATH}/multicore/main.elf \
+    --num-cpus=${NUM_CORES}
+```
 
 Licence
 =======
