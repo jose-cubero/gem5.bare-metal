@@ -36,7 +36,7 @@ CROSS_COMPILE_DIR = /usr/bin
 ARCH          ?= arm
 CROSS_COMPILE ?= arm-none-eabi-
 
-AS           = $(CROSS_COMPILE_DIR)/$(CROSS_COMPILE)as 
+AS           = $(CROSS_COMPILE_DIR)/$(CROSS_COMPILE)as
 LD           = $(CROSS_COMPILE_DIR)/$(CROSS_COMPILE)ld
 CC           = $(CROSS_COMPILE_DIR)/$(CROSS_COMPILE)gcc
 CXX          = $(CROSS_COMPILE_DIR)/$(CROSS_COMPILE)g++
@@ -49,7 +49,7 @@ OBJDUMP      = $(CROSS_COMPILE_DIR)/$(CROSS_COMPILE)objdump
 
 CFLAGS       = -g -O3 -lunistd -I .
 CXXFLAGS     = -g -O3 -lunistd -I . -fno-exceptions
-ASFLAGS      = -EL 
+ASFLAGS      = -EL
 LNK_OPT      = --specs=nosys.specs
 LNK_SCRIPT   = boot.ld
 LNK_FILE_OPT = -nostartfiles -Xlinker -Map=linkmap.txt -Xlinker -T$(LNK_SCRIPT)

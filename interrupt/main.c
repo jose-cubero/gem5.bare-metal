@@ -41,19 +41,19 @@
 
 int main(void)
 {
-    /* This example configures a timer instance to trigger a 
-     * Interrupt every few seconds. 
-     * The Interrupt release the isr function in the isr.c 
-     * file. 
+    /* This example configures a timer instance to trigger a
+     * Interrupt every few seconds.
+     * The Interrupt release the isr function in the isr.c
+     * file.
      */
-    
+
     unsigned int delay = 0;
     unsigned int counter = 0;
 
     int *timer1 = (int*)TIMER_BASE;
 
     timer1[CNTP_TVAL] = TIMER_VALUE; // set start value
-    
+
     printf("##################################################\n");
     printf("#################      Boot     ##################\n");
     printf("##################################################\n");

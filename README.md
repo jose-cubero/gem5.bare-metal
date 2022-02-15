@@ -2,31 +2,28 @@ gem5 ARM Bare-Metal tests
 ===========================
 
 This repository is based on (https://github.com/tukl-msd/gem5.bare-metal).
-It contains a set of basic ARM bare-metal applications which can be used to
-run gem5 simulations in full system mode. 
+It contains a set of basic ARM bare-metal applications which can be used to run gem5 simulations in full system mode.
 
 Included are 3 independent applications, placed inside a folder with the same name:
 
-Name      | Description                                                                           
-----------|---------------------------------------------------------------------------------------
-simple    | Single-core minimal "Hello World" application                                         
-interrupt | Single-core application showing the usage of the Generic Timer and Interrupt handling 
-multicore | Multi-core application with minimal MMU and cache initializaiton                      
+Name      | Description ----------|---------------------------------------------------------------------------------------
+simple    | Single-core minimal "Hello World" application
+interrupt | Single-core application showing the usage of the Generic Timer and Interrupt handling
+multicore | Multi-core application with minimal MMU and cache initializaiton
 
 ## Requirements
 
 ### Working gem5 build
 
-For information on gem5, including mandatory system dependencies and 
-installation instructions please look at [gem5.org](http://www.gem5.org/Main_Page).
+For information on gem5, including mandatory system dependencies and installation instructions please look at [gem5.org](http://www.gem5.org/Main_Page).
 
-We test the generated ARM binaries with gem5 v21.0.0.0 and v21.1.0.0.
+We test the generated ARM binaries with gem5 v21.0.0.0 and v21.1.0.1.
 
 ### GNU Arm Embedded Toolchain
 
 You can download this cross-compilation toolchain from the [official website](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads).
 
-Alternatively, use a pre-built package for your system. 
+Alternatively, use a pre-built package for your system.
 
 On Mac OSX you can yous macports:
 ``` bash

@@ -1,6 +1,6 @@
 unsigned int getCPUID(void);
 
-// Functions returning final value of SCTLR 
+// Functions returning final value of SCTLR
 unsigned int enable_caches(void);
 unsigned int disable_caches(void);
 

@@ -40,8 +40,7 @@ int main(void)
 
     printf("Hello World! %d\n", r);
 
-	while (1)
-	{
-	}
+    while (1)
+    {
+    }
 }
-

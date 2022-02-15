@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "armv7.h"
 #include "workloads.h"
 
@@ -36,5 +37,5 @@ int main()
     printf("CPU%d: done\n", id);
 
     sctlr = disable_caches();
-	return 0;
+        return 0;
 }

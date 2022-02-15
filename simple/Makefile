@@ -43,6 +43,5 @@ main.elf: $(OBJS) $(LNK_SCRIPT) Makefile
 boot.o: Makefile
 	$(CPP) boot.s $(CFLAGS) | $(AS) $(ASFLAGS) -o boot.o
 
-clean: 
-	rm -f *.o *.elf 
-
+clean:
+	rm -f *.o *.elf

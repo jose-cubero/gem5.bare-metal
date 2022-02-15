@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include <errno.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -11,13 +11,15 @@ volatile unsigned int *const UART0DR = (unsigned int *)0x1c090000;
 
 register char *stack_ptr __asm ("sp");
 
-int _read_r(UNUSED struct _reent *r, UNUSED int file, UNUSED char *ptr, UNUSED int len)
+int _read_r(UNUSED struct _reent *r, UNUSED int file, UNUSED char *ptr,
+        UNUSED int len)
 {
     errno = EINVAL;
     return -1;
 }
 
-int _lseek_r(UNUSED struct _reent *r, UNUSED int file, UNUSED int ptr, UNUSED int dir)
+int _lseek_r(UNUSED struct _reent *r, UNUSED int file, UNUSED int ptr,
+        UNUSED int dir)
 {
     return 0;
 }
@@ -38,7 +40,7 @@ int _close_r(struct _reent *r, int file)
 
 caddr_t _sbrk_r(struct _reent *r, int incr)
 {
-    extern char   end __asm ("end"); 
+    extern char   end __asm ("end");
     static char * heap_end;
     char *        prev_heap_end;
 
@@ -68,4 +70,3 @@ int _isatty_r(UNUSED struct _reent *r, UNUSED int fd)
 {
     return 1;
 }
-

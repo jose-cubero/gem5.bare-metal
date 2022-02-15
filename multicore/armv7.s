@@ -40,7 +40,7 @@ joinSMP:
 
 //////////////////////////////////////////////////////////////
 .global disableHighVecs
-.type disableHighVecs, "function" 
+.type disableHighVecs, "function"
   // void disable_highvecs(void);
 disableHighVecs:
     mrc     p15, 0, r0, c1, c0, 0 // Read System Control Register (SCTLR)
@@ -51,9 +51,9 @@ disableHighVecs:
 
 //////////////////////////////////////////////////////////////
 .global enable_mmu
-.type enable_mmu, "function" 
+.type enable_mmu, "function"
 // unsigned int enable_caches(void);
-// returns final value of SCTLR 
+// returns final value of SCTLR
 enable_mmu:
     dsb
     mrc p15, 0, r0, c1, c0, 0      // Read System Control Register
@@ -66,7 +66,7 @@ enable_mmu:
 
 //////////////////////////////////////////////////////////////
 .global disable_mmu
-.type disable_mmu, "function" 
+.type disable_mmu, "function"
 // unsigned int disable_mmu(void);
 // returns final value of SCTLR
 disable_mmu:
@@ -81,9 +81,9 @@ disable_mmu:
 
 //////////////////////////////////////////////////////////////
 .global enable_caches
-.type enable_caches, "function" 
+.type enable_caches, "function"
 // unsigned int enable_caches(void);
-// returns final value of SCTLR 
+// returns final value of SCTLR
 enable_caches:
 /*  Enable caches and branch prediction */
     mrc p15, 0, r0, c1, c0, 0      // Read System Control Register
@@ -97,7 +97,7 @@ enable_caches:
 
 //////////////////////////////////////////////////////////////
 .global disable_caches
-.type disable_caches, "function" 
+.type disable_caches, "function"
   // unsigned int disable_caches(void);
   // returns final value of SCTLR
 disable_caches:
@@ -112,8 +112,8 @@ disable_caches:
 
 //////////////////////////////////////////////////////////////
 //Page attribute templates
-.equ L1_NONCOHERENT, 0x00000c1e 
-.equ L1_COHERENT,    0x00015C06 
+.equ L1_NONCOHERENT, 0x00000c1e
+.equ L1_COHERENT,    0x00015C06
 // S:1 shared
 // AP:011 (RW full access),
 // TEX[2]:1, Cacheable mem, TEX[1:0]=C:B = 01, Write-back, Write-allocate
@@ -124,7 +124,7 @@ disable_caches:
 .equ UART_ADDR,      0x1c090000
 
 .global init_pagetable
-.type init_pagetable, "function" 
+.type init_pagetable, "function"
 init_pagetable:
 
   // Translation tables
@@ -160,7 +160,7 @@ init_pagetable:
     ldr    R0, =_pagetable_start    // ttb0_base must be a 16KB-aligned address.
     mov    R1, #0x2B                // The translation table walk is normal, inner
     orr    R1,   R0,  R1            // and    outer cacheable, WB WA, and inner
-    mcr    P15, 0, R1, C2, C0, 0    // shareable.   
+    mcr    P15, 0, R1, C2, C0, 0    // shareable.
 
   // PTE 1. Region covering program code and data
     ldr     r1,=_code_start
@@ -185,7 +185,7 @@ init_pagetable:
 
 //////////////////////////////////////////////////////////////
 .global invalidateCaches
-.type invalidateCaches, "function" 
+.type invalidateCaches, "function"
 // void invalidateCaches(void);
 invalidateCaches:
     /* Based on code example given in section B2.2.4/11.2.4 of Armv7-A/R Architecture Reference Manual (DDI 0406B) */

@@ -46,8 +46,8 @@ _Reset:
     B .                /* FIQ */
 
 
-.equ Len_Stack,        0x1000;  // 4kB of stack memory 
-.equ Len_IRQ_Stack,    0x1000;  // 4kB of stack memory for IRQ Mode 
+.equ Len_Stack,        0x1000;  // 4kB of stack memory
+.equ Len_IRQ_Stack,    0x1000;  // 4kB of stack memory for IRQ Mode
 //.equ stack_base,      0x18000   // stack_base defined in Linker Script
 
 //GIC Distributor & CPU interface
@@ -70,7 +70,7 @@ _Reset:
 
 .global Reset_Handler
 Reset_Handler:
-    // Set up stack pointers for IRQ processor mode 
+    // Set up stack pointers for IRQ processor mode
     mov R1, #0b11010010 // interrupts masked, MODE = IRQ   IRQ | FIQ | 0 | Mode[4:0]
     msr CPSR, R1    // change to IRQ mode
     ldr SP, =stack_base + Len_Stack + Len_IRQ_Stack // set IRQ stack
