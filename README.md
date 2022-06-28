@@ -6,7 +6,8 @@ It contains a set of basic ARM bare-metal applications which can be used to run 
 
 Included are 3 independent applications, placed inside a folder with the same name:
 
-Name      | Description ----------|---------------------------------------------------------------------------------------
+Name      | Description
+----------|---------------------------------------------------------------------------------------
 simple    | Single-core minimal "Hello World" application
 interrupt | Single-core application showing the usage of the Generic Timer and Interrupt handling
 multicore | Multi-core application with minimal MMU and cache initializaiton
